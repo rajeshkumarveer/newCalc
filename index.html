@@ -20,6 +20,7 @@
         @media screen and (max-width: 550px) {
             .back_design{
                 width: 100% !important;
+                border: none !important;
                 background-color: white;
             }
             #style-7{
@@ -29,6 +30,7 @@
             body{
                 padding: 0% !important;
                 padding-top: 13% !important;
+                
             }
             .row_space{
                 margin-top: 8% !important;
@@ -50,16 +52,18 @@
                 font-size: 2.2rem !important;
             }
             .value_result {
-                font-size: 5vh !important;
+                font-size: 5.6vh !important;
                 margin-top: 1% !important;
             }
-            .user_value {
-                font-size: 2.8vh !important;
-            }
+            
         }
         @media screen and (min-width: 551px) {
             .back_design{
                 width: 100% !important;
+                margin-top: 0% !important;
+                margin-bottom: 0% !important;
+                height: 100% !important;
+                border-radius: 0% !important;
             }
             body{
                 padding: 0% !important;
@@ -79,6 +83,7 @@
                 height: 57% !important;
                 width: 47% !important;
             }
+            
         }
         @media screen and (min-width: 1024px) {
             .main{
@@ -86,6 +91,10 @@
             }
             .back_design{
                 width: 70% !important;
+                margin-top: 0.5% !important;
+                margin-bottom: 0.5% !important;
+                height: 97.5% !important;
+                border-radius: 10px !important;
             }
             body{
                 padding: 0% 15% !important;
@@ -128,6 +137,7 @@
         body{
             overflow: hidden;
             padding: 0% 15%;
+            background: #e2e1e0;
         }
         .scrollbar{
             height: 100%;
@@ -157,13 +167,19 @@
         .back_design{
             overflow: hidden;
             position: fixed;
+            background: #fff;
+            margin-top: 0.5%;
+            margin-bottom: 0.5%;
+            height: 97.5%;
+            border-radius: 10px;
             top: 0%;
             width: 70%;
-            border: 5px solid greenyellow;
-            height: 100%;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            
             z-index: -1 !important;
         }
         .leftimg_design{
+            box-shadow: 0 0 15px yellowgreen;
             background-image: linear-gradient(90deg, rgb(182, 243, 85), rgb(8, 184, 8));
             height: 57%;
             width: 35%;
@@ -174,6 +190,7 @@
             top: 60%;
         }
         .rightimg_design{
+            box-shadow: 0 0 5px rgb(92, 177, 226);
             background-image: linear-gradient(90deg, rgb(65, 67, 230), rgb(91, 243, 243));
             height: 30%;
             width: 31.5%;
@@ -272,18 +289,20 @@
         }
         .equal_button{
             position: absolute;
+            cursor: pointer;
             left: 65%;
             bottom: -7%;
             padding: 0% 7%;
             border-radius: 15px;
             color: rgb(24, 24, 24);
+            box-shadow: 0 0px 5px yellowgreen;
             background-image: linear-gradient(90deg, yellow, rgb(2, 134, 46));
         }
         .effect2{
             transition: 5s;
             background-image: linear-gradient(90deg,rgb(2, 134, 46),yellow);
         }
-        .equal_button:hover{
+        .equal_button:active{
             transition: 5s;
             background-image: linear-gradient(90deg,rgb(2, 134, 46),yellow);
         }
@@ -298,7 +317,7 @@
             margin: 0% 2%;
             text-align: right;
             color: rgb(24, 24, 24);
-            box-shadow: 0px -5px 10px rgba(223, 219, 219, 0.8);
+            box-shadow: 0px -1px 7px yellowgreen;
             background-image: linear-gradient(90deg, yellow, rgb(2, 134, 46));
         }
         .but{
@@ -435,7 +454,7 @@
                 <div><input type="text" id="user_value"class="user_value " onkeydown="newCal(this)"onkeyup="checking()"></div>
                 <div><h2 class="value_result" id="value_result"></h2></div>
             </div>
-            <div class="equal_button"><h1 class="but" onclick="newCal(1)">=</h1></div>
+            <div class="equal_button" onclick="newCal(1)"><h1 class="but" >=</h1></div>
         </div>
     </div>
 
