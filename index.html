@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+    <style>
+        /* body{
+            min-width: 50rem;
+            min-height: 45rem;
+            background: url(https://vanseodesign.com/blog/wp-content/uploads/2012/11/linear-gradient.png) left bottom no-repeat, url(data:image/jpeg;base64,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) right top no-repeat;
+            background-size: 50vh, 40vh, auto;
+            transform: rotate(270deg);
+        } */
+        /* Background design open*/
+        @media screen and (max-width: 550px) {
+            .back_design{
+                width: 100% !important;
+                background-color: white;
+            }
+            #style-7{
+                margin-top: 10% !important;
+                height: 75vh !important;
+            }
+            body{
+                padding: 0% !important;
+                padding-top: 13% !important;
+            }
+            .row_space{
+                margin-top: 8% !important;
+            }
+            .rightimg_design{
+                height: 25% !important;
+                width: 45% !important;
+                transform: rotate(-55deg) !important;
+            }
+            .leftimg_design{
+                height: 57% !important;
+                width: 65% !important;
+            }
+            .operation{
+                width: 5.5vh !important;
+                font-size: 4vh !important;
+            }
+            h1{
+                font-size: 2.2rem !important;
+            }
+            .value_result {
+                font-size: 5vh !important;
+                margin-top: 1% !important;
+            }
+            .user_value {
+                font-size: 2.8vh !important;
+            }
+        }
+        @media screen and (min-width: 551px) {
+            .back_design{
+                width: 100% !important;
+            }
+            body{
+                padding: 0% !important;
+                padding-top: 5% !important;
+            }
+            .main{
+                margin: 0% 8% !important;
+            }
+            .row_space{
+                margin-top: 8% !important;
+            }
+            .rightimg_design{
+                height: 29% !important;
+                width: 33% !important;
+            }
+            .leftimg_design{
+                height: 57% !important;
+                width: 47% !important;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            .main{
+                margin: 0% 12.5% !important;
+            }
+            .back_design{
+                width: 70% !important;
+            }
+            body{
+                padding: 0% 15% !important;
+                padding-top: 3% !important;
+            }
+            .row_space{
+                margin-top: 7.6% !important;
+            }
+            .rightimg_design{
+                height: 29% !important;
+                width: 35.5% !important;
+            }
+            .leftimg_design{
+                height: 57% !important;
+                width: 45% !important;
+            }
+
+        }
+        @media screen and (min-width: 1440px) {
+            body{
+                padding-top: 2% !important;
+            }
+            .row_space{
+                margin-top: 6% !important;
+                
+            }
+            .rightimg_design{
+                height: 30% !important;
+                width: 31.5% !important;
+            }
+            .leftimg_design{
+                height: 57% !important;
+                width: 35% !important;
+            }
+
+        }
+        .row_space{
+            margin-top: 6% ;
+        }
+        body{
+            overflow: hidden;
+            padding: 0% 15%;
+        }
+        .scrollbar{
+            height: 100%;
+            margin-top: 1% !important;
+            overflow-y: scroll;
+        }
+        #style-7::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+        #style-7::-webkit-scrollbar{
+            width: 5px;
+            background-color: #F5F5F5;
+            box-shadow: 0 0 5px rgb(219, 214, 214);
+        }
+        #style-7::-webkit-scrollbar-thumb{
+            border-radius: 20px;
+            background-image: -webkit-gradient(linear,
+                                           left bottom,
+                                           left top,
+                                           color-stop(0.44, rgb(122,153,217)),
+                                           color-stop(0.72, rgb(73,125,189)),
+                                           color-stop(0.86, rgb(28,58,148)));
+                                          
+        }
+        
+        .back_design{
+            overflow: hidden;
+            position: fixed;
+            top: 0%;
+            width: 70%;
+            border: 5px solid greenyellow;
+            height: 100%;
+            z-index: -1 !important;
+        }
+        .leftimg_design{
+            background-image: linear-gradient(90deg, rgb(182, 243, 85), rgb(8, 184, 8));
+            height: 57%;
+            width: 35%;
+            transform: rotate(-40deg);
+            border-radius: 100px;
+            position: absolute; 
+            left: -5%;
+            top: 60%;
+        }
+        .rightimg_design{
+            background-image: linear-gradient(90deg, rgb(65, 67, 230), rgb(91, 243, 243));
+            height: 30%;
+            width: 31.5%;
+            transform: rotate(-41deg);
+            position: absolute;
+            top: -10%;
+            right: -14%;
+            border-radius: 30px;
+        }
+        .leftcircle_design{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 5px solid rgb(182, 243, 85);
+            position: absolute;
+            left: 1%;
+            top: 30%;
+        }
+        .rightcircle_design{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 5px solid rgb(91, 162, 243);
+            position: absolute;
+            top: 40%;
+            right: -1%;
+        }
+        .threecircle_design{
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-left: 1vh;
+            background-color: rgb(207, 204, 204);
+        }
+        .tricircle_design{
+            display:flex;
+            position: absolute;
+            top: 4%;
+            left: 3%;
+        }
+        /* Background design close*/
+        .main{
+            z-index: 10;
+            margin: 0% 12.5%;
+            padding-top: 6%;
+            padding-bottom: 3%;
+            padding-left: 1%;
+            background-color: rgb(28, 28, 43);
+            position: relative;
+            border-radius: 10px;
+            top: 16vh;
+            margin-bottom: 1%;
+            color: white;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        .num{
+            cursor: pointer;
+        }
+        .num:active{
+            color: rgba(255, 255, 255, 0.062);
+        }
+        .effect{
+            color: rgba(255, 255, 255, 0.062);
+        }
+        .operation{
+            color: black;
+            background-color: white;
+            border-radius: 50%;
+            padding: 6.5%;
+            width: 7vh;
+            font-weight: 400;
+            font-size: 3.7vh;
+            cursor: pointer;
+        }
+        
+        .effect1{
+            background-color: rgba(0, 0, 0, 0.014);
+            color: white;
+        }
+        .operation:active{
+            background-color: rgba(0, 0, 0, 0.014);
+            color: white;
+        }
+        
+        .half_circle{
+            z-index: -1;
+            position: fixed;
+            right: 22.5vw;
+            top: 8vw;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.046);
+            border-radius: 50%;
+            width: 200vh;
+            height: 200vh;
+        }
+        .equal_button{
+            position: absolute;
+            left: 65%;
+            bottom: -7%;
+            padding: 0% 7%;
+            border-radius: 15px;
+            color: rgb(24, 24, 24);
+            background-image: linear-gradient(90deg, yellow, rgb(2, 134, 46));
+        }
+        .effect2{
+            transition: 5s;
+            background-image: linear-gradient(90deg,rgb(2, 134, 46),yellow);
+        }
+        .equal_button:hover{
+            transition: 5s;
+            background-image: linear-gradient(90deg,rgb(2, 134, 46),yellow);
+        }
+        .result{
+            position: absolute;
+            top:-12.5%;
+            left: 6%;
+            height: 25%;
+            width: 85%;
+            padding:2% 4%;
+            border-radius: 10px;
+            margin: 0% 2%;
+            text-align: right;
+            color: rgb(24, 24, 24);
+            box-shadow: 0px -5px 10px rgba(223, 219, 219, 0.8);
+            background-image: linear-gradient(90deg, yellow, rgb(2, 134, 46));
+        }
+        .but{
+            font-size: 9vh !important;
+        }
+        .user_value{
+            font-size: 3.15vh;
+            font-weight: 400;
+        }
+        .value_result{
+            font-weight: 400;
+            font-size: 6vh;
+            margin: 0%;
+            overflow: hidden;
+        }
+        input {
+            font-weight: 400 !important;
+            color: rgb(44, 42, 42);
+            background-color: transparent !important;
+            border: none !important;
+            width: 100%;
+        }
+        input:focus{    
+            font-weight: 400;
+            background-color: transparent !important;
+            outline:none;
+            border: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+        .form-control{
+            padding: 0%;
+            height: 100%;
+        }
+        input[type="text"]{
+          text-align:right;
+          box-shadow:none;
+        }
+        #oldCal{
+            color: red;
+            background-color: yellowgreen;
+        }
+        #res1{
+            pointer-events: none;
+            position: relative;
+            width: 65%;
+            padding: 1% 4%;
+            border-radius: 10px;
+            margin-left: 12%;
+            text-align: right;
+            color: rgb(44, 42, 42);
+            box-shadow: 0px -5px 10px rgba(223, 219, 219, 0.8);
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.719), rgba(54, 52, 52, 0.719));
+        }
+        
+        @media screen and (max-width: 426px) {
+            .row_space{
+                margin-top: 5%;
+            }
+            .main{
+                margin: 0%;
+                padding-top: 20%;
+            }
+            .but{
+                font-size: 7vh !important;
+            }
+            .half_circle{
+                right: 3vw;
+            }
+            #style-7{
+                margin-top: 15%;
+            }
+            
+        }
+        @media screen and (width: 768px){
+            #style-7{
+                margin-top: 5%;
+            }
+        }
+        @media screen and (width: 1024px){
+            #style-7{
+                margin-top: 2%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!--Background design open-->
+    <div class="back_design">
+       <div class="leftimg_design"></div>
+       <div class="rightimg_design"></div>
+       <div class="leftcircle_design"></div>
+       <div class="rightcircle_design"></div>
+       <div class="tricircle_design">
+            <div class="threecircle_design"></div>
+            <div class="threecircle_design"></div>
+            <div class="threecircle_design"></div>
+       </div>
+    </div>
+    <!--Background design close-->
+
+    <div class="container scrollbar" id="style-7" style="height: 86.5vh;">
+        <div></div>
+        <div  class="main" id="main" >
+            <div class="row row_space">
+                <div class="col-2 offset-1"> <h1 class="num opt"onclick="add(this.innerHTML)">7</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">8</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">9</h1></div>
+                <div class="col-2 "> <h1 class="operation opt" onclick="clears(this.innerHTML)">C</h1></div>
+                <div class="col-2 "> <h1 class="operation opt" onclick="add(this.innerHTML)">/</h1></div>
+            </div>
+            <div class="row row_space">
+                <div class="col-2 offset-1 "> <h1 class="num opt" onclick="add(this.innerHTML)">4</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">5</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">6</h1></div>
+                <div class="col-2 "> <h1 class="operation opt"onclick="add(this.innerHTML)">%</h1></div>
+                <div class="col-2 "> <h1 class="operation opt"onclick="add(this.innerHTML)">-</h1></div>
+            </div>
+            <div class="row row_space">
+                <div class="col-2 offset-1 "> <h1 class="num opt" onclick="add(this.innerHTML)">1</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">2</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">3</h1></div>
+                <div class="col-2 "> <h1 class="operation opt"onclick="add(this.innerHTML)">*</h1></div>
+                <div class="col-2 "> <h1 class="operation opt"onclick="add(this.innerHTML)">+</h1></div>
+            </div>
+            <div class="row row_space">
+                <div class="col-2 offset-1 "></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">0</h1></div>
+                <div class="col-2 "> <h1 class="num opt" onclick="add(this.innerHTML)">.</h1></div>
+            </div>
+            <div class="half_circle"></div>
+            <div class="result container"id="res">
+                <div><input type="text" id="user_value"class="user_value " onkeydown="newCal(this)"onkeyup="checking()"></div>
+                <div><h2 class="value_result" id="value_result"></h2></div>
+            </div>
+            <div class="equal_button"><h1 class="but" onclick="newCal(1)">=</h1></div>
+        </div>
+    </div>
+
+
+<script>
+    document.getElementById("user_value").select();
+    var objDiv = document.getElementById("style-7");
+    objDiv.scrollTop = objDiv.scrollHeight;
+    function add(e) {   
+        var x = document.getElementById("user_value").value;
+        x+=e;
+        document.getElementById("user_value").value=x;
+
+        setTimeout(function() {
+            if(e=="0"){
+                var s=document.getElementById("user_value").value;
+                if(s.length==1){
+                    clears();
+                }
+                if(s.length>1&&!(s.substring(s.length-2,s.length-1)>=0&&s.substring(s.length-2,s.length-1)<10)&&s.substring(s.length-2,s.length-1)!="."){
+                    document.getElementById("user_value").value=s.substring(0,s.length-1);
+                }
+    
+            }
+        }, 100);
+
+    }
+    function clears() {
+        document.getElementById("user_value").value="";
+    }
+    
+    setInterval(function() {
+        var x = document.getElementById("user_value").value;
+        var x = x.replace("(", "");
+        var x = x.replace(")", "");
+        var res= eval(x);
+        if(x.length > 0){
+            document.getElementById("value_result").innerHTML = res;
+        }
+        else{
+            document.getElementById("value_result").innerHTML = 0;
+        }
+        
+    }, 0.1);
+    
+    function newCal(e) {
+        if (event.keyCode === 13||event.keyCode === 187||e === 1) {
+            document.getElementById("main").style.top="8%";
+            var elmnt = document.getElementById("res");
+            var cln = elmnt.cloneNode(true);
+            var elmnt = cln.cloneNode(true);
+            cln.setAttribute("id","res1");
+            document.getElementsByTagName('div')[10].appendChild(cln);
+            document.getElementById("user_value").id = "user_value1";
+            document.getElementById("value_result").id = "value_result1";
+            clears();
+            var m=document.getElementsByClassName("equal_button")[0];
+            m.classList.add("effect2");
+            setTimeout(function() {m.classList.remove("effect2");}, 100);
+            var objDiv = document.getElementById("style-7");
+            objDiv.scrollTop = objDiv.scrollHeight;
+
+        }
+    }
+    function checking(){
+        var x=event.keyCode;
+        if(event.keyCode === 13||event.keyCode === 187){
+            clears();   
+        }
+
+        if(!((x>=48&&x<=57)||x===9||x===13||x===191||x===16||x===32||x===37||x===39||x===46||(x>=96&&x<=111)||x===116||x===8||x===91||x===17||x===189||x===18||x===190||x===187)){
+            alert("Wrong key is entered !.......");
+            clears();
+        }
+        else{
+            var i;
+            for (i = 0; i < 17; i++){
+                if(x !== 116){
+                    var s = document.getElementById("user_value").value;
+                    if(document.getElementsByClassName("opt")[i].innerHTML === s.substring(s.length-1)){
+                        var m=document.getElementsByClassName("opt")[i];
+                        if((i==4||i==8||i==9||i==13||i==14)){
+                            m.classList.add("effect1");
+                            setTimeout(function() {m.classList.remove("effect1");}, 100);
+                        }
+                        else{
+                            m.classList.add("effect");
+                            setTimeout(function() {m.classList.remove("effect");}, 100);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(x===96){
+            var s=document.getElementById("user_value").value;
+            if(s.length==1){
+                clears();
+            }
+            if(s.length>1&&!(s.substring(s.length-2,s.length-1)>=0&&s.substring(s.length-2,s.length-1)<10)&&s.substring(s.length-2,s.length-1)!="."){
+                document.getElementById("user_value").value=s.substring(0,s.length-1);
+            }
+
+        }
+        
+            
+       
+    }
+</script>
+
+</body>
+
+</html>
